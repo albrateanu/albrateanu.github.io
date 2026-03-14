@@ -146,11 +146,11 @@ const Index = () => {
               <p className="text-foreground leading-relaxed">
                 I am a final-year BSc student majoring in Computer Science at the University of Manchester.
                 My research is under the supervision of{" "}
-                <a href="https://www.linkedin.com/in/cosmin-ancuti-86b3872/" className="font-semibold text-highlight hover:text-highlight/80" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/cosmin-ancuti-86b3872/" className="font-semibold" target="_blank" rel="noopener noreferrer">
                   Prof. Cosmin Ancuti
                 </a>{" "}
                 and{" "}
-                <a href="https://personalpages.manchester.ac.uk/staff/tingting.mu/Site/About_Me.html" className="font-semibold text-highlight hover:text-highlight/80" target="_blank" rel="noopener noreferrer">
+                <a href="https://personalpages.manchester.ac.uk/staff/tingting.mu/Site/About_Me.html" className="font-semibold" target="_blank" rel="noopener noreferrer">
                   Dr. Tingting Mu
                 </a>{" "}
                 on deep learning methods for image restoration and enhancement, and physics-driven visual representation learning.
