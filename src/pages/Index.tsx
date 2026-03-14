@@ -125,7 +125,7 @@ const Index = () => {
               className="w-44 h-44 rounded-full object-cover mx-auto md:mx-0 mb-5"
             />
             <h2 className="text-lg font-semibold text-foreground">Alexandru Brateanu</h2>
-            <p className="text-xs text-muted-foreground italic mt-0.5">From pixels to intuition</p>
+            
             <p className="text-sm text-muted-foreground mt-1">
               BSc Computer Science Student at the University of Manchester
             </p>
