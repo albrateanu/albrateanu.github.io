@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import profilePhoto from "@/assets/profile-photo.jpg";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Github, GraduationCap, Linkedin, Link } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -21,52 +21,66 @@ const itemVariants = {
 
 const publications = [
   {
-    title: "Language Models Improve When Pretraining Data Matches Target Tasks",
-    authors: "David Mizrahi, Anders Boesen Lindbo Larsen, Jesse Allardice, Suzie Petryk, Yuri Gorokhov, Jeffrey Li, Alex Fang, Josh Gardner, Tom Gunter, Afshin Dehghan",
+    title: "ISALux: Illumination and Segmentation Aware Transformer Employing Mixture of Experts for Low Light Image Enhancement",
+    authors: "Raul Balmez, Alexandru Brateanu, Ciprian Orhei, Codruta O. Ancuti, Cosmin Ancuti",
+    venue: "WACV, 2026",
+    links: [{ label: "Paper", url: "https://arxiv.org/abs/2508.17885" }],
+  },
+  {
+    title: "ModalFormer: Multimodal Transformer for Low-Light Image Enhancement",
+    authors: "Alexandru Brateanu, Raul Balmez, Ciprian Orhei, Codruta O. Ancuti, Cosmin Ancuti",
     venue: "arXiv, 2025",
-    links: [{ label: "Paper", url: "#" }],
-    highlight: "David Mizrahi",
-  },
-  {
-    title: "FlexTok: Resampling Images into 1D Token Sequences of Flexible Length",
-    authors: "Roman Bachmann*, Jesse Allardice*, David Mizrahi*, Enrico Fini, Oğuzhan Fatih Kar, Elmira Amirloo, Alaeeldin El-Nouby, Amir Zamir, Afshin Dehghan",
-    venue: "ICML, 2025",
     links: [
-      { label: "Project Page", url: "#" },
-      { label: "Paper", url: "#" },
+      { label: "Paper", url: "https://arxiv.org/abs/2507.20388" },
+      { label: "Code", url: "https://github.com/albrateanu/ModalFormer" },
     ],
-    highlight: "David Mizrahi*",
   },
   {
-    title: "4M-21: An Any-to-Any Vision Model for Tens of Tasks and Modalities",
-    authors: "Roman Bachmann, Oğuzhan Fatih Kar, David Mizrahi, Ali Garjani, Mingfei Gao, David Griffiths, Jiaming Hu, Afshin Dehghan, Amir Zamir",
-    venue: "NeurIPS, 2024",
+    title: "LYT-Net: Lightweight YUV Transformer-based Network for Low-Light Image Enhancement",
+    authors: "Alexandru Brateanu, Raul Balmez, Adrian Avram, Ciprian Orhei, Cosmin Ancuti",
+    venue: "SPL, 2025",
     links: [
-      { label: "Project Page", url: "#" },
-      { label: "Paper", url: "#" },
+      { label: "Paper", url: "https://ieeexplore.ieee.org/abstract/document/10972228" },
+      { label: "Code", url: "https://github.com/albrateanu/LYT-Net" },
     ],
-    highlight: "David Mizrahi",
   },
   {
-    title: "4M: Massively Multimodal Masked Modeling",
-    authors: "David Mizrahi*, Roman Bachmann*, Oğuzhan Fatih Kar, Teresa Yeo, Mingfei Gao, Afshin Dehghan, Amir Zamir",
-    venue: "NeurIPS, 2023 (Spotlight)",
+    title: "DepthLux: Employing Depthwise Separable Convolutions for Low-Light Image Enhancement",
+    authors: "Raul Balmez, Alexandru Brateanu, Ciprian Orhei, Codruta O. Ancuti, Cosmin Ancuti",
+    venue: "Sensors, 2025",
+    links: [{ label: "Paper", url: "https://www.mdpi.com/1424-8220/25/5/1530" }],
+  },
+  {
+    title: "AKDT: Adaptive Kernel Dilation Transformer for Effective Image Denoising",
+    authors: "Alexandru Brateanu, Raul Balmez, Adrian Avram, Ciprian Orhei",
+    venue: "VISAPP, 2025",
     links: [
-      { label: "Project Page", url: "#" },
-      { label: "Paper", url: "#" },
+      { label: "Paper", url: "https://www.scitepress.org/Papers/2025/131577/131577.pdf" },
+      { label: "Code", url: "https://github.com/albrateanu/AKDT" },
     ],
-    highlight: "David Mizrahi*",
   },
   {
-    title: "Understanding Transfer Learning with Optimal Transport",
-    authors: "David Mizrahi*, Raja Giryes, Guillermo Sapiro",
-    venue: "AISTATS, 2023",
-    links: [{ label: "Paper", url: "#" }],
-    highlight: "David Mizrahi*",
+    title: "Enhancing Low-Light Images with Kolmogorov–Arnold Networks in Transformer Attention",
+    authors: "Alexandru Brateanu, Raul Balmez, Ciprian Orhei, Codruta O. Ancuti, Cosmin Ancuti",
+    venue: "Sensors, 2025",
+    links: [{ label: "Paper", url: "https://www.mdpi.com/1424-8220/25/2/327" }],
+  },
+  {
+    title: "Kolmogorov-Arnold Networks in Transformer Attention for Low-Light Image Enhancement",
+    authors: "Alexandru Brateanu, Raul Balmez",
+    venue: "ISETC, 2024",
+    links: [{ label: "Paper", url: "https://ieeexplore.ieee.org/abstract/document/10797300/" }],
+  },
+  {
+    title: "DepthLux: Depthwise Separable Convolution Transformer",
+    authors: "Raul Balmez, Alexandru Brateanu",
+    venue: "ISETC, 2024",
+    links: [{ label: "Paper", url: "https://ieeexplore.ieee.org/abstract/document/10797398/" }],
   },
 ];
 
-function highlightAuthor(authors: string, name: string) {
+function highlightAuthor(authors: string) {
+  const name = "Alexandru Brateanu";
   const idx = authors.indexOf(name);
   if (idx === -1) return authors;
   return (
@@ -78,20 +92,25 @@ function highlightAuthor(authors: string, name: string) {
   );
 }
 
+const contactLinks = [
+  { label: "Email", url: "mailto:albrateanu@gmail.com", icon: Mail },
+  { label: "GitHub", url: "https://github.com/albrateanu", icon: Github },
+  { label: "Scholar", url: "https://scholar.google.com/citations?user=ru0meGgAAAAJ", icon: GraduationCap },
+  { label: "LinkedIn", url: "https://www.linkedin.com/in/albrateanu/", icon: Linkedin },
+  { label: "ORCID", url: "https://orcid.org/0009-0001-2752-2357", icon: Link },
+];
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="border-b border-border">
         <div className="max-w-5xl mx-auto px-6 py-4">
-          <h1 className="text-lg font-semibold text-foreground">David Mizrahi</h1>
+          <h1 className="text-lg font-semibold text-foreground">Alexandru Brateanu</h1>
         </div>
       </header>
 
-      {/* Accent line */}
       <div className="h-1 bg-primary" />
 
-      {/* Main content */}
       <motion.main
         className="max-w-5xl mx-auto px-6 py-12"
         variants={containerVariants}
@@ -99,57 +118,42 @@ const Index = () => {
         animate="visible"
       >
         <div className="flex flex-col md:flex-row gap-12">
-          {/* Sidebar */}
           <motion.aside variants={itemVariants} className="md:w-64 shrink-0">
             <img
               src={profilePhoto}
-              alt="David Mizrahi"
+              alt="Alexandru Brateanu"
               className="w-44 h-44 rounded-full object-cover mx-auto md:mx-0 mb-5"
             />
-            <h2 className="text-lg font-semibold text-foreground">David Mizrahi</h2>
+            <h2 className="text-lg font-semibold text-foreground">Alexandru Brateanu</h2>
+            <p className="text-xs text-muted-foreground italic mt-0.5">From pixels to intuition</p>
             <p className="text-sm text-muted-foreground mt-1">
-              Member of Technical Staff at Anthropic
+              BSc Computer Science Student at the University of Manchester
             </p>
 
             <div className="mt-5 space-y-2 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-primary" />
-                San Francisco, CA
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-primary" />
-                <a href="mailto:email@example.com">Email</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 text-primary font-bold text-xs flex items-center justify-center">𝕏</span>
-                <a href="#">Twitter</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 text-primary font-bold text-xs flex items-center justify-center">in</span>
-                <a href="#">LinkedIn</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 text-primary font-bold text-xs flex items-center justify-center">⌥</span>
-                <a href="#">Github</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 text-primary font-bold text-xs flex items-center justify-center">🎓</span>
-                <a href="#">Google Scholar</a>
-              </div>
+              {contactLinks.map((link) => (
+                <div key={link.label} className="flex items-center gap-2">
+                  <link.icon className="w-4 h-4 text-primary" />
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>
+                </div>
+              ))}
             </div>
           </motion.aside>
 
-          {/* Content */}
           <div className="flex-1 min-w-0">
             <motion.section variants={itemVariants}>
               <h2 className="text-2xl font-bold text-foreground mb-4">About me</h2>
               <p className="text-foreground leading-relaxed">
-                Hi, I'm David! I'm a member of technical staff at{" "}
-                <a href="https://anthropic.com">Anthropic</a>. Previously, I was a
-                research scientist at <a href="https://apple.com">Apple</a> where I
-                worked on language model pretraining and multimodal foundation models.
-                I completed my BSc and MSc at EPFL, where I researched multimodal
-                models at <a href="#">VILAB</a> with Prof. Amir Zamir.
+                I am a final-year BSc student majoring in Computer Science at the University of Manchester.
+                My research is under the supervision of{" "}
+                <a href="https://www.linkedin.com/in/cosmin-ancuti-86b3872/" className="font-semibold" target="_blank" rel="noopener noreferrer">
+                  Prof. Cosmin Ancuti
+                </a>{" "}
+                and{" "}
+                <a href="https://personalpages.manchester.ac.uk/staff/tingting.mu/Site/About_Me.html" className="font-semibold" target="_blank" rel="noopener noreferrer">
+                  Dr. Tingting Mu
+                </a>{" "}
+                on deep learning methods for image restoration and enhancement, and physics-driven visual representation learning.
               </p>
             </motion.section>
 
@@ -160,15 +164,14 @@ const Index = () => {
                   <motion.li key={i} variants={itemVariants}>
                     <h3 className="font-bold text-foreground">{pub.title}</h3>
                     <p className="text-sm text-foreground mt-1 leading-relaxed">
-                      {highlightAuthor(pub.authors, pub.highlight)}
+                      {highlightAuthor(pub.authors)}
                     </p>
                     <p className="text-sm text-muted-foreground mt-1">
                       {pub.venue}
                       {pub.links.map((link, j) => (
                         <span key={j}>
-                          {" "}
-                          •{" "}
-                          <a href={link.url}>{link.label}</a>
+                          {" "}•{" "}
+                          <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>
                         </span>
                       ))}
                     </p>
