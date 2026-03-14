@@ -104,9 +104,10 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b border-border">
-        <div className="max-w-5xl mx-auto px-6 py-4">
-          <h1 className="text-lg font-semibold text-foreground">Alexandru Brateanu</h1>
-        </div>
+        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-3">
+            <div className="w-8 h-8 rounded bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold">AB</div>
+            <h1 className="text-lg font-semibold text-foreground">Alexandru Brateanu</h1>
+          </div>
       </header>
 
       <div className="h-1 bg-primary" />
