@@ -105,7 +105,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <header className="border-b border-border">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-3">
-            <img src="/ab_logo.png" alt="Logo" className="w-8 h-8 rounded object-cover" />
+            <img src="/ab_logo.png" alt="Logo" className="w-12 h-12 rounded object-cover" />
             <h1 className="text-lg font-semibold text-foreground">Alexandru Brateanu</h1>
           </div>
       </header>
