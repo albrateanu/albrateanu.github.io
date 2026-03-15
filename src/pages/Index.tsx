@@ -102,12 +102,32 @@ const contactLinks = [
 ];
 
 const Index = () => {
+  const [dark, setDark] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") === "dark" ||
+        (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  }, [dark]);
+
   return (
     <div className="min-h-screen bg-background">
       <header className="border-b border-border">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-3">
             <img src="/ab_logo.png" alt="Logo" className="w-8 h-8 rounded object-cover" />
             <h1 className="text-lg font-semibold text-foreground">Alexandru Brateanu</h1>
+            <button
+              onClick={() => setDark(!dark)}
+              className="ml-auto p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {dark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
           </div>
       </header>
 
