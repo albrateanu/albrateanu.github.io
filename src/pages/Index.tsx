@@ -153,7 +153,7 @@ const Index = () => {
             </p>
 
             <p className="text-sm text-muted-foreground mt-1">
-              <i>BSc Computer Science Student University of Manchester</i>
+              <i>BSc The University of Manchester</i>
             </p>
 
             <div className="mt-5 space-y-2 text-sm text-muted-foreground">
