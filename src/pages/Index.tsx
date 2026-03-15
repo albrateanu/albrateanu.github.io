@@ -1,6 +1,7 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import profilePhoto from "@/assets/profile-photo.jpg";
-import { Mail, MapPin, Github, GraduationCap, Linkedin, Link } from "lucide-react";
+import { Mail, Github, GraduationCap, Linkedin, Link, Sun, Moon } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
