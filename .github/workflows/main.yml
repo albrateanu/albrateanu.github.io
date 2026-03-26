@@ -1,0 +1,58 @@
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  repository_dispatch:
+    types: [multinex-updated]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main site repo
+        uses: actions/checkout@v4
+        with:
+          path: main-site
+
+      - name: Checkout Multinex repo
+        uses: actions/checkout@v4
+        with:
+          repository: albrateanu/multinex-hub
+          path: multinex-hub
+
+      # If multinex-hub is already plain static HTML/CSS/JS, keep this.
+      # If it needs a build step, add it before the copy.
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p out
+          cp -R main-site/* out/ || true
+          mkdir -p out/Multinex
+          rsync -av --delete \
+            --exclude '.git' \
+            --exclude '.github' \
+            multinex-hub/ out/Multinex/
+
+      - name: Ensure main site entry exists
+        run: |
+          test -f out/index.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
