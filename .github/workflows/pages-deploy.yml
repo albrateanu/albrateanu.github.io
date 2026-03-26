@@ -1,10 +1,11 @@
-name: Deploy to GitHub Pages
+name: Deploy site
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
+  repository_dispatch:
+    types: [multinex-updated]
 
 permissions:
   contents: read
@@ -16,39 +17,60 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
 
-      - name: Setup Node.js
+    steps:
+      - name: Checkout main site repo
+        uses: actions/checkout@v4
+        with:
+          path: main-site
+
+      - name: Checkout Multinex repo
+        uses: actions/checkout@v4
+        with:
+          repository: albrateanu/multinex-hub
+          path: multinex-hub
+          token: ${{ secrets.MULTINEX_REPO_TOKEN }}
+
+      - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
-      - name: Install dependencies
+      - name: Install main site dependencies
+        working-directory: main-site
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Build main site
+        working-directory: main-site
+        run: npx vite build --base=/
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      - name: Install Multinex dependencies
+        working-directory: multinex-hub
+        run: npm ci
 
-      - name: Upload artifact
+      - name: Build Multinex
+        working-directory: multinex-hub
+        run: npx vite build --base=/Multinex/
+
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p out
+          rsync -av --delete main-site/dist/ out/
+          mkdir -p out/Multinex
+          rsync -av --delete multinex-hub/dist/ out/Multinex/
+
+      - name: Ensure entries exist
+        run: |
+          test -f out/index.html
+          test -f out/Multinex/index.html
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: out
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
