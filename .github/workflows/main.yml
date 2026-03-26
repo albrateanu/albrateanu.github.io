@@ -46,6 +46,11 @@ jobs:
         working-directory: multinex-hub
         run: npm run build
 
+      - name: Debug built index
+        run: |
+          echo "----- dist/index.html -----"
+          cat multinex-hub/dist/index.html
+
       - name: Prepare Pages artifact
         run: |
           mkdir -p out
