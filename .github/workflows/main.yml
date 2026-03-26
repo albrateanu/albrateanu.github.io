@@ -42,9 +42,19 @@ jobs:
         working-directory: multinex-hub
         run: npm ci
 
+      - name: Debug package.json
+        run: |
+          echo "----- package.json -----"
+          cat multinex-hub/package.json
+      
+      - name: Debug config files
+        run: |
+          echo "----- files in multinex-hub root -----"
+          ls -la multinex-hub
+
       - name: Build Multinex
         working-directory: multinex-hub
-        run: npm run build
+        run: npx vite build --base=/Multinex/
 
       - name: Debug built index
         run: |
