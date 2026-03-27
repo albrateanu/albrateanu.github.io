@@ -59,16 +59,13 @@ jobs:
           mkdir -p out
           rsync -av --delete main-site/dist/ out/
       
-          mkdir -p out/Multinex
-          rsync -av --delete multinex-hub/dist/ out/Multinex/
-      
           mkdir -p out/multinex
           rsync -av --delete multinex-hub/dist/ out/multinex/
 
       - name: Ensure entries exist
         run: |
           test -f out/index.html
-          test -f out/Multinex/index.html
+          test -f out/multinex/index.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
