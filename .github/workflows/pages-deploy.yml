@@ -52,7 +52,7 @@ jobs:
 
       - name: Build Multinex
         working-directory: multinex-hub
-        run: npx vite build --base=/Multinex/
+        run: npx vite build --base=/multinex/
 
       - name: Prepare Pages artifact
         run: |
