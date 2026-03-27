@@ -62,10 +62,26 @@ jobs:
           mkdir -p out/multinex
           rsync -av --delete multinex-hub/dist/ out/multinex/
 
+          # Create redirect for /Multinex → /multinex
+          mkdir -p out/Multinex
+          cat <<EOF > out/Multinex/index.html
+          <!doctype html>
+          <html>
+            <head>
+              <meta http-equiv="refresh" content="0; url=/multinex/" />
+              <script>
+                window.location.replace("/multinex/" + window.location.search + window.location.hash);
+              </script>
+            </head>
+            <body></body>
+          </html>
+          EOF
+
       - name: Ensure entries exist
         run: |
           test -f out/index.html
           test -f out/multinex/index.html
+          test -f out/Multinex/index.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
