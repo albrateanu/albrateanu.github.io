@@ -22,6 +22,16 @@ const itemVariants = {
 
 const publications = [
   {
+    title: "Multinex: Lightweight Low-light Image Enhancement via Multi-prior Retinex",
+    authors: "Alexandru Brateanu, Tingting Mu, Codruta O. Ancuti, Cosmin Ancuti",
+    venue: "CVPR, 2026",
+    links: [
+      { label: "Project Page", url: "https://albrateanu.github.io/multinex/" },
+      { label: "Paper", url: "https://arxiv.org/abs/xxx" },
+      { label: "Code", url: "https://github.com/albrateanu/multinex" },
+    ],
+  },
+  {
     title: "ISALux: Illumination and Segmentation Aware Transformer Employing Mixture of Experts for Low Light Image Enhancement",
     authors: "Raul Balmez, Alexandru Brateanu, Ciprian Orhei, Codruta O. Ancuti, Cosmin Ancuti",
     venue: "WACV, 2026",
