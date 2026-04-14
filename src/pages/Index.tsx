@@ -27,8 +27,10 @@ const publications = [
     venue: "CVPR, 2026",
     links: [
       { label: "Project Page", url: "https://albrateanu.github.io/multinex/" },
-      { label: "Paper", url: "https://arxiv.org/abs/xxx" },
+      { label: "Paper", url: "https://arxiv.org/abs/2604.10359" },
+      { label: "PDF", url: "https://arxiv.org/pdf/2604.10359" },
       { label: "Code", url: "https://github.com/albrateanu/multinex" },
+      { label: "Supplementary", url: "https://drive.google.com/file/d/1-bRljca_GG1wvwJYP56bTHhpJZkJmulB/view" },
     ],
   },
   {
