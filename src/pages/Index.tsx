@@ -133,13 +133,13 @@ const Index = () => {
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-3">
             <img src="/ab_logo.png" alt="Logo" className="w-8 h-8 rounded object-cover" />
             <h1 className="text-lg font-semibold text-foreground">Alexandru Brateanu</h1>
-            <button
+            {/* <button
               onClick={() => setDark(!dark)}
               className="ml-auto p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
               aria-label="Toggle dark mode"
             >
               {dark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
+            </button> */}
           </div>
       </header>
 
