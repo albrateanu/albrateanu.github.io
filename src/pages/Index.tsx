@@ -199,7 +199,11 @@ const Index = () => {
               <h2 className="text-2xl font-bold text-foreground mb-6">Selected work</h2>
               <ul className="space-y-8">
                 {publications.map((pub, i) => (
-                  <motion.li key={i} variants={itemVariants}>
+                  <motion.li
+                    key={i}
+                    variants={itemVariants}
+                    className={pub.venue.includes("CVPR") ? "featured-publication" : ""}
+                  >
                     <h3 className="font-bold text-foreground">{pub.title}</h3>
                     <p className="text-sm text-foreground mt-1 leading-relaxed">
                       {highlightAuthor(pub.authors)}
