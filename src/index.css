@@ -76,8 +76,15 @@
 @layer components {
   .featured-publication {
     position: relative;
+    padding: 0.2rem 0;
+    isolation: isolate;
+  }
+
+  .featured-publication::before {
+    content: "";
+    position: absolute;
+    inset: -0.7rem -0.9rem;
     border-radius: 0.9rem;
-    padding: 1rem 1.1rem;
     background: linear-gradient(
       135deg,
       hsl(var(--primary) / 0.16),
@@ -87,7 +94,19 @@
     background-size: 220% 220%;
     animation: featuredGlow 8s ease-in-out infinite alternate;
     box-shadow: 0 6px 24px hsl(var(--primary) / 0.14);
-    overflow: hidden;
+    z-index: -1;
+  }
+
+  .featured-publication::after {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    top: 0.2rem;
+    bottom: 0.2rem;
+    width: 0.18rem;
+    border-radius: 999px;
+    background: hsl(var(--primary));
+    opacity: 0.8;
   }
 }
 
