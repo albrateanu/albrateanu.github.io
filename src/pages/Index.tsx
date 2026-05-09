@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import profilePhoto from "@/assets/profile-photo.jpg";
-import { Mail, Github, GraduationCap, Linkedin, Link, Sun, Moon } from "lucide-react";
+import { Mail, Github, GraduationCap, Linkedin, Link, Sun, Moon, Globe, FileText, FileDown, CodeXml } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -19,6 +19,14 @@ const itemVariants = {
     transition: { duration: 0.3 },
   },
 };
+
+const publicationLinkIcons = {
+  "Project Page": Globe,
+  Paper: FileText,
+  PDF: FileDown,
+  Code: CodeXml,
+  Supplementary: FileText,
+} as const;
 
 const publications = [
   {
@@ -210,12 +218,24 @@ const Index = () => {
                     </p>
                     <p className="text-sm text-muted-foreground mt-1">
                       {pub.venue}
-                      {pub.links.map((link, j) => (
-                        <span key={j}>
-                          {" "}•{" "}
-                          <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>
-                        </span>
-                      ))}
+                      {pub.links.map((link, j) => {
+                        const Icon = publicationLinkIcons[link.label as keyof typeof publicationLinkIcons];
+
+                        return (
+                          <span key={j}>
+                            {" "}•{" "}
+                            <a
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 align-[-0.125em]"
+                            >
+                              {Icon && <Icon className="h-3.5 w-3.5" aria-hidden="true" />}
+                              <span>{link.label}</span>
+                            </a>
+                          </span>
+                        );
+                      })}
                     </p>
                   </motion.li>
                 ))}
