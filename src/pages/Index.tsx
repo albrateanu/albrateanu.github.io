@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link as RouterLink } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
-import { Mail, Github, GraduationCap, Linkedin, Link, Sun, Moon, Globe, FileText, FileDown, CodeXml } from "lucide-react";
+import { Mail, Github, GraduationCap, Linkedin, Link, Globe, FileText, FileDown, CodeXml } from "lucide-react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -122,51 +122,22 @@ const contactLinks = [
 ];
 
 const Index = () => {
-  const [dark, setDark] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") === "dark" ||
-        (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    }
-    return false;
-  });
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-    localStorage.setItem("theme", dark ? "dark" : "light");
-  }, [dark]);
-
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border">
-        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-3">
-            <img src="/ab_logo.png" alt="Logo" className="w-8 h-8 rounded object-cover" />
-            <h1 className="text-lg font-semibold text-foreground">Alexandru Brateanu</h1>
-            {/* <button
-              onClick={() => setDark(!dark)}
-              className="ml-auto p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-              aria-label="Toggle dark mode"
-            >
-              {dark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button> */}
-          </div>
-      </header>
-
-      <div className="h-1 bg-primary" />
-
+    <div className="min-h-screen bg-background academic-page">
       <motion.main
-        className="max-w-5xl mx-auto px-6 py-12"
+        className="max-w-5xl mx-auto px-6 py-14 lg:py-20"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="flex flex-col md:flex-row gap-12">
-          <motion.aside variants={itemVariants} className="md:w-64 shrink-0">
+        <div className="flex flex-col md:flex-row gap-12 lg:gap-16">
+          <motion.aside variants={itemVariants} className="profile-sidebar md:w-64 shrink-0">
             <img
               src={profilePhoto}
               alt="Alexandru Brateanu"
-              className="w-44 h-44 rounded-full object-cover mx-auto md:mx-0 mb-5"
+              className="profile-photo w-44 h-44 object-cover mx-auto md:mx-0 mb-6"
             />
-            <h2 className="text-lg font-semibold text-foreground">Alexandru Brateanu</h2>
+            <h2 className="profile-name">Alexandru Brateanu</h2>
             
             <p className="text-sm text-muted-foreground mt-1">
               Undergraduate Student
@@ -176,20 +147,20 @@ const Index = () => {
               <i>The University of Manchester</i>
             </p>
 
-            <div className="mt-5 space-y-2 text-sm text-muted-foreground">
+            <div className="contact-links mt-6 space-y-1 text-sm text-muted-foreground">
               {contactLinks.map((link) => (
-                <div key={link.label} className="flex items-center gap-2">
-                  <link.icon className="w-4 h-4 text-primary" />
+                <div key={link.label} className="contact-link flex items-center gap-2">
+                  <link.icon className="w-4 h-4" />
                   <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>
                 </div>
               ))}
             </div>
           </motion.aside>
 
-          <div className="flex-1 min-w-0">
+          <div className="content-column flex-1 min-w-0">
             <motion.section variants={itemVariants}>
-              <h2 className="text-2xl font-bold text-foreground mb-4">About me</h2>
-              <p className="text-foreground leading-relaxed">
+              <h2 className="section-heading">About me</h2>
+              <p className="intro-copy text-foreground leading-relaxed">
                 I am a final-year BSc student majoring in Computer Science at the University of Manchester.
                 My research is under the supervision of{" "}
                 <a href="https://www.linkedin.com/in/cosmin-ancuti-86b3872/" className="font-semibold" target="_blank" rel="noopener noreferrer">
@@ -203,27 +174,27 @@ const Index = () => {
               </p>
             </motion.section>
 
-            <motion.section variants={itemVariants} className="mt-10">
-              <h2 className="text-2xl font-bold text-foreground mb-6">Selected work</h2>
-              <ul className="space-y-8">
-                {publications.map((pub, i) => (
+            <motion.section variants={itemVariants} className="publications-section mt-14">
+              <h2 className="section-heading">Selected work</h2>
+              <ul className="publications-list space-y-4">
+                {publications.filter((pub) => ["Multinex", "LYT-Net", "ISALux"].some((title) => pub.title.startsWith(title))).map((pub, i) => (
                   <motion.li
                     key={i}
                     variants={itemVariants}
-                    className={pub.venue.includes("CVPR") ? "featured-publication" : ""}
+                    className={pub.venue.includes("CVPR") ? "publication featured-publication" : "publication"}
                   >
-                    <h3 className="font-bold text-foreground">{pub.title}</h3>
-                    <p className="text-sm text-foreground mt-1 leading-relaxed">
+                    <h3 className="publication-title">{pub.title}</h3>
+                    <p className="publication-authors text-sm text-foreground mt-2 leading-relaxed">
                       {highlightAuthor(pub.authors)}
                     </p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {pub.venue}
+                    <div className="publication-meta text-sm text-muted-foreground mt-3 flex flex-wrap items-center gap-y-2">
+                      <span className="publication-venue">{pub.venue}</span>
+                      <span className="publication-actions">
                       {pub.links.map((link, j) => {
                         const Icon = publicationLinkIcons[link.label as keyof typeof publicationLinkIcons];
 
                         return (
                           <span key={j}>
-                            {" "}•{" "}
                             <a
                               href={link.url}
                               target="_blank"
@@ -236,10 +207,14 @@ const Index = () => {
                           </span>
                         );
                       })}
-                    </p>
+                      </span>
+                    </div>
                   </motion.li>
                 ))}
               </ul>
+              <RouterLink to="/publications" className="all-publications-link">
+                View all publications
+              </RouterLink>
             </motion.section>
           </div>
         </div>
