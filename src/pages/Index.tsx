@@ -140,7 +140,7 @@ const Index = () => {
             <h2 className="profile-name">Alexandru Brateanu</h2>
             
             <p className="text-sm text-muted-foreground mt-1">
-              Undergraduate Student
+              PhD Researcher in World Modelling
             </p>
 
             <p className="text-sm text-muted-foreground mt-1">
@@ -160,18 +160,34 @@ const Index = () => {
           <div className="content-column flex-1 min-w-0">
             <motion.section variants={itemVariants}>
               <h2 className="section-heading">About me</h2>
-              <p className="intro-copy text-foreground leading-relaxed">
-                I am a final-year BSc student majoring in Computer Science at the University of Manchester.
-                My research is under the supervision of{" "}
-                <a href="https://www.linkedin.com/in/cosmin-ancuti-86b3872/" className="font-semibold" target="_blank" rel="noopener noreferrer">
-                  Prof. Cosmin Ancuti
-                </a>{" "}
-                and{" "}
+              <div className="intro-copy text-foreground leading-relaxed space-y-4">
+              <p>
+                I am a first-year PhD researcher in world modelling and physical AI at the University of Manchester, under the supervision of{" "}
                 <a href="https://personalpages.manchester.ac.uk/staff/tingting.mu/Site/About_Me.html" className="font-semibold" target="_blank" rel="noopener noreferrer">
                   Dr. Tingting Mu
                 </a>{" "}
-                on deep learning methods for image restoration and enhancement, and physics-driven visual representation learning.
+                and{" "}
+                <a href="https://research.manchester.ac.uk/en/persons/timothy.f.cootes" className="font-semibold" target="_blank" rel="noopener noreferrer">
+                  Prof. Timothy Cootes
+                </a>
+                .
               </p>
+              <p>
+                I received my BSc in Computer Science from the University of Manchester in 2026. Previously, I worked with{" "}
+                <a href="https://www.meo.etc.upt.ro/2-uncategorised/2105-cosmin-ancuti" className="font-semibold" target="_blank" rel="noopener noreferrer">
+                  Prof. Cosmin Ancuti
+                </a>
+                ,{" "}
+                <a href="https://www.meo.etc.upt.ro/2-uncategorised/2106-codruta-orniana-ancuti" className="font-semibold" target="_blank" rel="noopener noreferrer">
+                  Prof. Codruta O. Ancuti
+                </a>
+                , and{" "}
+                <a href="https://ro.linkedin.com/in/ciprian-constantin-orhei-68785218" className="font-semibold" target="_blank" rel="noopener noreferrer">
+                  Dr. Ciprian Orhei
+                </a>{" "}
+                on deep learning methods for image restoration and enhancement.
+              </p>
+              </div>
             </motion.section>
 
             <motion.section variants={itemVariants} className="publications-section mt-14">
