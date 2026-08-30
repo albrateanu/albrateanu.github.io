@@ -147,7 +147,7 @@ const Index = () => {
               <i>The University of Manchester</i>
             </p>
 
-            <div className="contact-links mt-6 space-y-1 text-sm text-muted-foreground">
+            <div className="contact-links mt-[18px] space-y-1 text-sm text-muted-foreground">
               {contactLinks.map((link) => (
                 <div key={link.label} className="contact-link flex items-center gap-2">
                   <link.icon className="w-4 h-4" />
