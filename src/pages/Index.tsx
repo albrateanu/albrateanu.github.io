@@ -173,7 +173,7 @@ const Index = () => {
                 .
               </p>
               <p>
-                I received my BSc in Computer Science from the University of Manchester in 2026. Previously, I worked with{" "}
+                I received my BSc in Computer Science from the University of Manchester in 2026. Since 2024, I have also been working with{" "}
                 <a href="https://www.meo.etc.upt.ro/2-uncategorised/2105-cosmin-ancuti" className="font-semibold" target="_blank" rel="noopener noreferrer">
                   Prof. Cosmin Ancuti
                 </a>
