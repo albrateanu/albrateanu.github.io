@@ -45,7 +45,12 @@ const publications = [
     title: "ISALux: Illumination and Segmentation Aware Transformer Employing Mixture of Experts for Low Light Image Enhancement",
     authors: "Raul Balmez, Alexandru Brateanu, Ciprian Orhei, Codruta O. Ancuti, Cosmin Ancuti",
     venue: "WACV, 2026",
-    links: [{ label: "Paper", url: "https://arxiv.org/abs/2508.17885" }],
+    links: [
+      { label: "Project Page", url: "https://raulbalmez.github.io/ISALux/" },
+      { label: "Paper", url: "https://arxiv.org/abs/2508.17885" },
+      { label: "Code", url: "https://github.com/raulbalmez/ISALux" },
+      { label: "Supplementary", url: "https://openaccess.thecvf.com/content/WACV2026/supplemental/Balmez_ISALux_Illumination_and_WACV_2026_supplemental.pdf" },
+    ],
   },
   {
     title: "ModalFormer: Multimodal Transformer for Low-Light Image Enhancement",
