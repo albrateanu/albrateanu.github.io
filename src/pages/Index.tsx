@@ -48,6 +48,7 @@ const publications = [
     links: [
       { label: "Project Page", url: "https://raulbalmez.github.io/ISALux/" },
       { label: "Paper", url: "https://arxiv.org/abs/2508.17885" },
+      { label: "PDF", url: "https://openaccess.thecvf.com/content/WACV2026/papers/Balmez_ISALux_Illumination_and_Semantics-Aware_Transformer_Employing_Mixture_of_Experts_for_WACV_2026_paper.pdf" },
       { label: "Code", url: "https://github.com/raulbalmez/ISALux" },
       { label: "Supplementary", url: "https://openaccess.thecvf.com/content/WACV2026/supplemental/Balmez_ISALux_Illumination_and_WACV_2026_supplemental.pdf" },
     ],
